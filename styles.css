@@ -1,0 +1,37 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+  }
+  
+  .banner img {
+    max-width: 100%;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  #user-profiles {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .user-profile {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    width: 45%;
+  }
+  
+  #profile-app {
+    margin-top: 30px;
+  }
+  
