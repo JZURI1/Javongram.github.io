@@ -15,25 +15,22 @@ const firebaseConfig = {
   // Reference to your Realtime Database
   const database = firebase.database();
   
-  // Function to retrieve user profiles and display them on the webpage
-  // Function to retrieve user profiles and display them on the webpage
-function displayUserProfiles() {
-    const userProfileContainer = document.getElementById('user-profiles');
+  // Function to retrieve user profiles and display them in a table
+  function displayUserProfiles() {
+    const userTable = document.getElementById('user-table').getElementsByTagName('tbody')[0];
   
     // Retrieve data for the users from the database
     database.ref('users').once('value', (snapshot) => {
       snapshot.forEach((childSnapshot) => {
         const userData = childSnapshot.val();
-        const userProfileCard = document.createElement('div');
-        userProfileCard.classList.add('user-profile');
-        userProfileCard.innerHTML = `
-          <h2>${userData.name}</h2>
-          <p>Age: ${userData.age}</p>
-          <p>Gender: ${userData.gender}</p>
-          <p>Caption: ${userData.caption}</p>
-          <img src="${userData.image}" alt="${userData.name}">
+        const row = userTable.insertRow();
+        row.innerHTML = `
+          <td>${userData.name}</td>
+          <td>${userData.age}</td>
+          <td>${userData.gender}</td>
+          <td>${userData.caption}</td>
+          <td><img src="${userData.image}" alt="${userData.name}" style="max-width: 100px;"></td>
         `;
-        userProfileContainer.appendChild(userProfileCard);
       });
     });
   }
@@ -41,4 +38,5 @@ function displayUserProfiles() {
   // Call the function to display user profiles when the page loads
   window.onload = displayUserProfiles;
   
+
   
