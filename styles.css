@@ -7,7 +7,13 @@ body {
   header {
     background-color: #333;
     color: #fff;
-    padding: 80px;
+    padding: 10px;
+  }
+
+  .banner {
+    position: relative; /* Ensure positioning context for the logo */
+    height: 100px; /* Adjust the height of the banner */
+    background-color: #333; /* Optional: Set a background color for the banner */
   }
   
   .banner img {
