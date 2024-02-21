@@ -29,8 +29,9 @@ body {
   }
   
   #user-profiles {
-    display: flex;
-    justify-content: space-between;
+    margin: 0 auto; /* Set left and right margins to auto to horizontally center the element */
+    width: 65%; /* Adjust the width of the container if needed */
+    max-width: 800px; /* Optionally set a maximum width for the container */
   }
   
   .user-profile {
