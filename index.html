@@ -37,8 +37,47 @@
     </div>
   </main>
 
-  <script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js"></script>
-  <script src="script.js"></script>
+  <script>
+    // Define user data as a JavaScript object
+    var userData = {
+      "K5zpPtFrBKUrfU7Yp5ZQavUMLtH3": {
+        "age": "18",
+        "caption": "Besties",
+        "gender": "Male",
+        "image": "http://res.cloudinary.com/thunkablecloudinary123/image/upload/v1707865898/t8ui92mvtnyfrz3swwxg.jpg",
+        "name": "Javon Alt"
+      },
+      "dxM2v2m0mPMIqNeXEUAL0S13TgQ2": {
+        "age": "18",
+        "caption": "👀",
+        "gender": "Male",
+        "image": "http://res.cloudinary.com/thunkablecloudinary123/image/upload/v1707869750/v8pqj3omol0zf5gretpy.jpg",
+        "name": "Javon Main"
+      }
+    };
+
+    // Function to display user profiles using the embedded data
+    function displayUserProfiles() {
+      const userTable = document.getElementById('user-table').getElementsByTagName('tbody')[0];
+
+      // Iterate over the userData object and populate the table
+      for (const userId in userData) {
+        if (userData.hasOwnProperty(userId)) {
+          const userDataItem = userData[userId];
+          const row = userTable.insertRow();
+          row.innerHTML = `
+            <td>${userDataItem.name}</td>
+            <td>${userDataItem.age}</td>
+            <td>${userDataItem.gender}</td>
+            <td>${userDataItem.caption}</td>
+            <td><img src="${userDataItem.image}" alt="${userDataItem.name}" style="max-width: 100px;"></td>
+          `;
+        }
+      }
+    }
+
+    // Call the function to display user profiles when the page loads
+    window.onload = displayUserProfiles;
+  </script>
 </body>
 </html>
