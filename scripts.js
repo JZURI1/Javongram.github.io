@@ -15,8 +15,8 @@ const firebaseConfig = {
   // Reference to your Realtime Database
   const database = firebase.database();
   
-  // Function to retrieve user profiles and display them in a table
-  function displayUserProfiles() {
+// Function to retrieve user profiles and display them in a table
+function displayUserProfiles() {
     const userTable = document.getElementById('user-table').getElementsByTagName('tbody')[0];
   
     // Retrieve data for the users from the database
@@ -32,11 +32,15 @@ const firebaseConfig = {
           <td><img src="${userData.image}" alt="${userData.name}" style="max-width: 100px;"></td>
         `;
       });
+    })
+    .then(() => {
+      console.log('User data retrieved successfully.');
+    })
+    .catch((error) => {
+      console.error('Error retrieving user data:', error);
     });
   }
   
-  // Call the function to display user profiles when the page loads
-  window.onload = displayUserProfiles;
   
 
   
