@@ -16,20 +16,22 @@ const firebaseConfig = {
   const database = firebase.database();
   
   // Function to retrieve user profiles and display them on the webpage
-  function displayUserProfiles() {
+  // Function to retrieve user profiles and display them on the webpage
+function displayUserProfiles() {
     const userProfileContainer = document.getElementById('user-profiles');
   
-    // Retrieve data for the first two users from the database
-    database.ref('users').limitToFirst(2).once('value', (snapshot) => {
+    // Retrieve data for the users from the database
+    database.ref('users').once('value', (snapshot) => {
       snapshot.forEach((childSnapshot) => {
         const userData = childSnapshot.val();
         const userProfileCard = document.createElement('div');
         userProfileCard.classList.add('user-profile');
         userProfileCard.innerHTML = `
           <h2>${userData.name}</h2>
-          <p>Email: ${userData.email}</p>
           <p>Age: ${userData.age}</p>
-          <!-- Add more profile information as needed -->
+          <p>Gender: ${userData.gender}</p>
+          <p>Caption: ${userData.caption}</p>
+          <img src="${userData.image}" alt="${userData.name}">
         `;
         userProfileContainer.appendChild(userProfileCard);
       });
@@ -38,4 +40,5 @@ const firebaseConfig = {
   
   // Call the function to display user profiles when the page loads
   window.onload = displayUserProfiles;
+  
   
